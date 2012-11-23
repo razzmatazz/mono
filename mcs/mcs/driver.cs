@@ -54,7 +54,7 @@ namespace Mono.CSharp
 			}
 
 			using (input){
-				SeekableStreamReader reader = new SeekableStreamReader (input, ctx.Settings.Encoding);
+				SeekableStreamReader reader = new SeekableStreamReader (input, ctx.Settings.Encoding, null);
 				var file = new CompilationSourceFile (module, sourceFile);
 
 				Tokenizer lexer = new Tokenizer (reader, file, session);

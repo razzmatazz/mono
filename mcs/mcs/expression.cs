@@ -80,7 +80,7 @@ namespace Mono.CSharp
 		public override void Emit (EmitContext ec)
 		{
 			var call = new CallEmitter ();
-			call.EmitPredefined (ec, oper, arguments);
+			call.EmitPredefined (ec, oper, arguments, null);
 		}
 
 		public override SLE.Expression MakeExpression (BuilderContext ctx)
@@ -4210,7 +4210,7 @@ namespace Mono.CSharp
 			var method = res.ResolveMember<MethodSpec> (new ResolveContext (ec.MemberContext), ref arguments);
 			if (method != null) {
 				var call = new CallEmitter ();
-				call.EmitPredefined (ec, method, arguments);
+				call.EmitPredefined (ec, method, arguments, null);
 			}
 		}
 

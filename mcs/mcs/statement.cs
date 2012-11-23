@@ -4574,7 +4574,7 @@ namespace Mono.CSharp {
 
 				var ce = new CallEmitter ();
 				ce.InstanceExpression = new CompilerGeneratedThis (ec.CurrentType, loc);
-				ce.EmitPredefined (ec, finally_host.Spec, new Arguments (0));
+				ce.EmitPredefined (ec, finally_host.Spec, new Arguments (0), null);
 			} else {
 				EmitFinallyBody (ec);
 			}
@@ -4638,7 +4638,7 @@ namespace Mono.CSharp {
 			if (finally_host != null) {
 				var ce = new CallEmitter ();
 				ce.InstanceExpression = new CompilerGeneratedThis (ec.CurrentType, loc);
-				ce.EmitPredefined (ec, finally_host.Spec, new Arguments (0));
+				ce.EmitPredefined (ec, finally_host.Spec, new Arguments (0), null);
 			} else {
 				EmitFinallyBody (ec);
 			}

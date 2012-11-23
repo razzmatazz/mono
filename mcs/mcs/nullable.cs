@@ -143,9 +143,9 @@ namespace Mono.CSharp.Nullable
 			call.InstanceExpression = this;
 
 			if (useDefaultValue)
-				call.EmitPredefined (ec, NullableInfo.GetGetValueOrDefault (expr.Type), null);
+				call.EmitPredefined (ec, NullableInfo.GetGetValueOrDefault (expr.Type), null, null);
 			else
-				call.EmitPredefined (ec, NullableInfo.GetValue (expr.Type), null);
+				call.EmitPredefined (ec, NullableInfo.GetValue (expr.Type), null, null);
 		}
 
 		public void EmitCheck (EmitContext ec)
@@ -155,7 +155,7 @@ namespace Mono.CSharp.Nullable
 			var call = new CallEmitter ();
 			call.InstanceExpression = this;
 
-			call.EmitPredefined (ec, NullableInfo.GetHasValue (expr.Type), null);
+			call.EmitPredefined (ec, NullableInfo.GetHasValue (expr.Type), null, null);
 		}
 
 		public override bool Equals (object obj)
@@ -251,7 +251,7 @@ namespace Mono.CSharp.Nullable
 		{
 			var call = new CallEmitter ();
 			call.InstanceExpression = Child;
-			call.EmitPredefined (ec, NullableInfo.GetValue (Child.Type), null);
+			call.EmitPredefined (ec, NullableInfo.GetValue (Child.Type), null, null);
 		}
 	}
 
@@ -1250,13 +1250,13 @@ namespace Mono.CSharp.Nullable
 
 			var call = new CallEmitter ();
 			call.InstanceExpression = lt;
-			call.EmitPredefined (ec, NullableInfo.GetHasValue (expr.Type), null);
+			call.EmitPredefined (ec, NullableInfo.GetHasValue (expr.Type), null, null);
 
 			ec.Emit (OpCodes.Brfalse, is_null_label);
 
 			call = new CallEmitter ();
 			call.InstanceExpression = lt;
-			call.EmitPredefined (ec, NullableInfo.GetValue (expr.Type), null);
+			call.EmitPredefined (ec, NullableInfo.GetValue (expr.Type), null, null);
 
 			lt.Release (ec);
 

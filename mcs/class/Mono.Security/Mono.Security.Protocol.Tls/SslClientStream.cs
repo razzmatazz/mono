@@ -291,7 +291,7 @@ namespace Mono.Security.Protocol.Tls
 			}
 		}
 
-		private void SafeReceiveRecord (Stream s, bool ignoreEmpty = false)
+		private void SafeReceiveRecord (Stream s, bool ignoreEmpty)
 		{
 			byte[] record = this.protocol.ReceiveRecord (s);
 			if (!ignoreEmpty && ((record == null) || (record.Length == 0))) {
@@ -332,7 +332,7 @@ namespace Mono.Security.Protocol.Tls
 					// If all goes well this will process messages:
 					// 		Change Cipher Spec
 					//		Server finished
-					SafeReceiveRecord (this.innerStream);
+					SafeReceiveRecord (this.innerStream, false);
 				}
 
 				// Send Finished message
@@ -382,7 +382,7 @@ namespace Mono.Security.Protocol.Tls
 					// If all goes well this will process messages:
 					// 		Change Cipher Spec
 					//		Server finished
-					SafeReceiveRecord (this.innerStream);
+					SafeReceiveRecord (this.innerStream, false);
 				}
 			}
 

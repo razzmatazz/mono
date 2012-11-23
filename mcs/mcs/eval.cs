@@ -555,7 +555,7 @@ namespace Mono.CSharp
 
 			var enc = ctx.Settings.Encoding;
 			var s = new MemoryStream (enc.GetBytes (input));
-			SeekableStreamReader seekable = new SeekableStreamReader (s, enc);
+			SeekableStreamReader seekable = new SeekableStreamReader (s, enc, null);
 
 			InputKind kind = ToplevelOrStatement (seekable);
 			if (kind == InputKind.Error){

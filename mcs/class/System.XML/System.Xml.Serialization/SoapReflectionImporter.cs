@@ -445,7 +445,7 @@ namespace System.Xml.Serialization {
 				if (typeData.IsComplexType)
 					mapAttribute.MappedType = ImportTypeMapping (typeData.Type, defaultNamespace);
 
-				typeData = TypeTranslator.GetTypeData (rmember.MemberType, atts.SoapAttribute.DataType);
+				typeData = TypeTranslator.GetTypeData (rmember.MemberType, atts.SoapAttribute.DataType, false);
 				mapMember = mapAttribute;
 				mapMember.DefaultValue = GetDefaultValue (typeData, atts.SoapDefaultValue);
 			}
@@ -455,7 +455,7 @@ namespace System.Xml.Serialization {
 				else mapMember = new XmlTypeMapMemberElement ();
 
 				if (atts.SoapElement != null && atts.SoapElement.DataType.Length != 0)
-					typeData = TypeTranslator.GetTypeData (rmember.MemberType, atts.SoapElement.DataType);
+					typeData = TypeTranslator.GetTypeData (rmember.MemberType, atts.SoapElement.DataType, false);
 
 				// Creates an ElementInfo that identifies the element
 				XmlTypeMapElementInfoList infoList = new XmlTypeMapElementInfoList();

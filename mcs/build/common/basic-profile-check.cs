@@ -6,9 +6,11 @@ class X {
 		var x = new X ();
 	}
 	
+/*
 	void DefaultParametersAvailable (int i = 3)
 	{
 	}
+*/
 
 	static int Main ()
 	{

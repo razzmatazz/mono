@@ -152,7 +152,7 @@ namespace Mono.CSharp {
 		int char_count;         // count of filled characters in buffer[]
 		int pos;                // index into buffer[]
 
-		public SeekableStreamReader (Stream stream, Encoding encoding, char[] sharedBuffer = null)
+		public SeekableStreamReader (Stream stream, Encoding encoding, char[] sharedBuffer)
 		{
 			this.stream = stream;
 			this.buffer = sharedBuffer;

@@ -164,10 +164,10 @@ namespace System.Xml.Serialization
 
 		public static TypeData GetTypeData (Type type)
 		{
-			return GetTypeData (type, null);
+			return GetTypeData (type, null, false);
 		}
 
-		public static TypeData GetTypeData (Type runtimeType, string xmlDataType, bool underlyingEnumType = false)
+		public static TypeData GetTypeData (Type runtimeType, string xmlDataType, bool underlyingEnumType)
 		{
 			if (underlyingEnumType && runtimeType.IsEnum)
 				runtimeType = Enum.GetUnderlyingType (runtimeType);
@@ -304,7 +304,7 @@ namespace System.Xml.Serialization
 			
 			if (primType.SchemaType == SchemaTypes.Primitive)
 			{
-				TypeData newPrim = GetTypeData (primType.Type, null);
+				TypeData newPrim = GetTypeData (primType.Type, null, false);
 				if (newPrim != primType) return newPrim;
 			}
 			return primType;

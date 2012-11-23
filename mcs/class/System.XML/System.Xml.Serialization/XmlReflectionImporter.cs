@@ -512,7 +512,7 @@ namespace System.Xml.Serialization {
 					throw new InvalidOperationException ("XmlArrayItemAttribute.Form must not be Unqualified when it has an explicit Namespace value.");
 				if (att.NestingLevel != nestingLevel) continue;
 				Type elemType = (att.Type != null) ? att.Type : itemType;
-				XmlTypeMapElementInfo elem = new XmlTypeMapElementInfo (null, TypeTranslator.GetTypeData(elemType, att.DataType));
+				XmlTypeMapElementInfo elem = new XmlTypeMapElementInfo (null, TypeTranslator.GetTypeData(elemType, att.DataType, false));
 				elem.Namespace = att.Namespace != null ? att.Namespace : defaultNamespace;
 				if (elem.Namespace == null) elem.Namespace = "";
 				elem.Form = att.Form;
@@ -900,7 +900,7 @@ namespace System.Xml.Serialization {
 						mapAttribute.Namespace = "";
 				}
 				
-				typeData = TypeTranslator.GetTypeData(rmember.MemberType, atts.XmlAttribute.DataType);
+				typeData = TypeTranslator.GetTypeData(rmember.MemberType, atts.XmlAttribute.DataType, false);
 				mapMember = mapAttribute;
 			}
 			else if (typeData.SchemaType == SchemaTypes.Array)
@@ -1018,7 +1018,7 @@ namespace System.Xml.Serialization {
 			foreach (XmlElementAttribute att in atts.XmlElements)
 			{
 				Type elemType = (att.Type != null) ? att.Type : defaultType;
-				XmlTypeMapElementInfo elem = new XmlTypeMapElementInfo (member, TypeTranslator.GetTypeData(elemType, att.DataType));
+				XmlTypeMapElementInfo elem = new XmlTypeMapElementInfo (member, TypeTranslator.GetTypeData(elemType, att.DataType, false));
 				elem.Form = att.Form;
 				if (elem.Form != XmlSchemaForm.Unqualified)
 					elem.Namespace = (att.Namespace != null) ? att.Namespace : defaultNamespace;
@@ -1116,7 +1116,7 @@ namespace System.Xml.Serialization {
 				if (defaultType == typeof(XmlNode)) defaultType = typeof(XmlText);	// Nodes must be text nodes
 #endif
 
-				XmlTypeMapElementInfo elem = new XmlTypeMapElementInfo (member, TypeTranslator.GetTypeData(defaultType, atts.XmlText.DataType));
+				XmlTypeMapElementInfo elem = new XmlTypeMapElementInfo (member, TypeTranslator.GetTypeData(defaultType, atts.XmlText.DataType, false));
 
 				if (elem.TypeData.SchemaType != SchemaTypes.Primitive &&
 					elem.TypeData.SchemaType != SchemaTypes.Enum &&

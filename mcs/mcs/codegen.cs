@@ -947,7 +947,7 @@ namespace Mono.CSharp
 			EmitPredefined (ec, method, Arguments, loc);
 		}
 
-		public void EmitPredefined (EmitContext ec, MethodSpec method, Arguments Arguments, Location? loc = null)
+		public void EmitPredefined (EmitContext ec, MethodSpec method, Arguments Arguments, Location? loc)
 		{
 			Expression instance_copy = null;
 
